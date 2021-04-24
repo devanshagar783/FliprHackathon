@@ -92,6 +92,7 @@ public class EmailSignUp extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     if (FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
                                         startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                        finish();
                                     } else
                                         Toast.makeText(getApplicationContext(), "Please verify email", Toast.LENGTH_SHORT).show();
                                 } else

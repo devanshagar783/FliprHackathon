@@ -265,13 +265,13 @@ public class PhoneAuthActivity extends AppCompatActivity {
                             //Log.d(TAG, "inside if" + " No record found");
                             Log.d(TAG, "onSuccess: user found");
                             Toast.makeText(PhoneAuthActivity.this, "Verified!.Loggin in", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(PhoneAuthActivity.this, MainActivity.class));
                         } else {
                             Log.d(TAG, "checkRegister: not found");
                             Toast.makeText(PhoneAuthActivity.this, "Verified! Create your account", Toast.LENGTH_SHORT).show();
                             saveDetails();
-                            startActivity(new Intent(PhoneAuthActivity.this, MainActivity.class));
                         }
+                        startActivity(new Intent(PhoneAuthActivity.this, MainActivity.class));
+                        finish();
                     }
                 });
     }
