@@ -9,6 +9,7 @@
     >
     
     <TextView
+        android:id="@+id/info"
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "Hello World!"
@@ -17,6 +18,17 @@
         app:layout_constraintLeft_toLeftOf = "parent"
         app:layout_constraintRight_toRightOf = "parent"
         app:layout_constraintTop_toTopOf = "parent"
+        />
+
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/fbsign"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@id/info"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="100dp"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

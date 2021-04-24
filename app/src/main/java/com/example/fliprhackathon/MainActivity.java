@@ -28,8 +28,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+import android.widget.TextView;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
+
+    private FirebaseAuth mAuth;
+    private TextView info;
 
     private TextView textView;
 
@@ -43,6 +50,10 @@ public class MainActivity extends AppCompatActivity {
         //readExcelSheet();
         //readSheet2();
         readJsonNames();
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        info = findViewById(R.id.info);
+        info.setText("Welcome " + currentUser.getDisplayName());
     }
 
     void readExcelSheet() {
@@ -255,5 +266,17 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
         return json;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
+
+    @Override
+    public void onBackPressed() {
+//        super.onBackPressed();
+        finish();
     }
 }
