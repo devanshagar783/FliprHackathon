@@ -3,8 +3,10 @@ package com.example.fliprhackathon;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.res.AssetManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,14 +32,16 @@ import java.util.Random;
 import java.util.Set;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.facebook.Profile;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
-    private TextView info;
-
+    private TextView userName;
+    private ImageView userDP;
     private TextView textView;
 
     private static final String TAG = "MainActivity";
@@ -46,14 +50,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        textView = findViewById(R.id.textview);
+        textView = findViewById(R.id.textview);
         //readExcelSheet();
         //readSheet2();
         readJsonNames();
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        info = findViewById(R.id.info);
-        info.setText("Welcome " + currentUser.getDisplayName());
+        userName = findViewById(R.id.userName);
+        userDP = findViewById(R.id.userDP);
+        Uri userID = Profile.getCurrentProfile().getProfilePictureUri(120,120);
+        userName.setText("Welcome, " + currentUser.getDisplayName());
+
+        Glide.with(this)
+                .asBitmap()
+                .load(userID)
+                .into(userDP);
     }
 
     void readExcelSheet() {
