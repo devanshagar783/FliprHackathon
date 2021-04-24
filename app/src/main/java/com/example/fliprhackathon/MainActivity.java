@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.Set;
+
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -46,14 +47,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        textView = findViewById(R.id.textview);
-        //readExcelSheet();
-        //readSheet2();
-        readJsonNames();
+
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         info = findViewById(R.id.info);
-        info.setText("Welcome " + currentUser.getDisplayName());
+        info.setText("Welcome, " + currentUser.getDisplayName());
+
+        //readExcelSheet();
+        //readSheet2();
+        readJsonNames();
     }
 
     void readExcelSheet() {
