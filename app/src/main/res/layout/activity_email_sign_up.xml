@@ -95,28 +95,46 @@
             android:id="@+id/reltv"
             />
     
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width = "wrap_content"
             android:layout_marginTop="12dp"
             android:layout_height = "wrap_content"
             android:layout_below="@+id/reltv"
             android:layout_centerHorizontal="true"
             android:orientation="horizontal">
-        
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width = "wrap_content"
-                android:layout_height = "wrap_content"
+
+            <com.facebook.login.widget.LoginButton
                 android:id="@+id/fbsign"
-                android:src="@drawable/fb_icon"/>
-        
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:layout_width = "wrap_content"
-                android:layout_height = "wrap_content"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                />
+
+            <Button
                 android:id="@+id/phonesign"
-                android:layout_marginStart="40dp"
-                android:src="@drawable/phone"/>
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintTop_toBottomOf="@+id/fbsign"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="10dp"
+                android:text="Login with OTP"
+                />
+
+<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                android:layout_width = "wrap_content"-->
+<!--                android:layout_height = "wrap_content"-->
+<!--                android:id="@+id/phonesign"-->
+<!--                android:layout_marginStart="40dp"-->
+<!--                android:src="@drawable/phone"/>-->
     
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
         
     </RelativeLayout>
 

@@ -8,4 +8,6 @@
     <string name = "email_address">Email address</string>
     <string name = "register">Register</string>
     <string name = "login">Login</string>
+    <string name="facebook_app_id">183145126964420</string>
+    <string name="fb_login_protocol_scheme">fb183145126964420</string>
 </resources>
