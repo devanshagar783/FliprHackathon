@@ -12,6 +12,8 @@
         android:roundIcon = "@mipmap/ic_launcher_round"
         android:supportsRtl = "true"
         android:theme = "@style/Theme.FliprHackathon">
+        <activity android:name = ".EmailSignUp">
+        </activity>
         <activity android:name = ".PhoneAuthActivity">
         </activity>
         <activity

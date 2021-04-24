@@ -5,4 +5,7 @@
     <string name = "get_started">Get Started</string>
     <string name = "phone_title_text">Phone Number</string>
     <string name = "resend_phone_auth">Resend</string>
+    <string name = "email_address">Email address</string>
+    <string name = "register">Register</string>
+    <string name = "login">Login</string>
 </resources>

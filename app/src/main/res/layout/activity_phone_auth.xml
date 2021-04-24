@@ -5,17 +5,17 @@
     xmlns:tools = "http://schemas.android.com/tools"
     android:layout_width = "match_parent"
     android:layout_height = "match_parent"
-    android:orientation="vertical"
+    android:orientation = "vertical"
     tools:context = ".PhoneAuthActivity"
     >
     
     <com.google.android.material.textfield.TextInputLayout
         android:id = "@+id/phonebox"
-        android:layout_marginTop="200dp"
         style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
         android:layout_marginStart = "32dp"
+        android:layout_marginTop = "200dp"
         android:layout_marginEnd = "32dp"
         android:hint = "@string/phone_title_text"
         android:paddingBottom = "8dp"
