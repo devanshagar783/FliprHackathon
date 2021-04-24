@@ -30,6 +30,13 @@
         app:layout_constraintTop_toBottomOf="@+id/info"
         />
     
+    <Button
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:id="@+id/buildteam"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
+    
     <com.facebook.login.widget.LoginButton
         android:id="@+id/fbsign"
         android:layout_width="250dp"

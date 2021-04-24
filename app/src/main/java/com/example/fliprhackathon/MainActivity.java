@@ -2,9 +2,12 @@ package com.example.fliprhackathon;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -40,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView info;
 
     private TextView textView;
+    private Button btn;
 
     private static final String TAG = "MainActivity";
 
@@ -52,11 +56,18 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         info = findViewById(R.id.info);
         info.setText("Welcome " + currentUser.getDisplayName());
+        btn = findViewById(R.id.buildteam);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), BuildTeamActivity.class));
+            }
+        });
 
         textView = findViewById(R.id.textview);
         //readExcelSheet();
         //readSheet2();
-        readJsonNames();
+        //readJsonNames();
     }
 
     void readExcelSheet() {
