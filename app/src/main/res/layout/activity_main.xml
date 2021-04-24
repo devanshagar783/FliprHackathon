@@ -13,13 +13,23 @@
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "Hello World!"
-        android:id="@+id/textview"
-        app:layout_constraintBottom_toBottomOf = "parent"
+        app:layout_constraintBottom_toTopOf="@+id/textview"
         app:layout_constraintLeft_toLeftOf = "parent"
         app:layout_constraintRight_toRightOf = "parent"
         app:layout_constraintTop_toTopOf = "parent"
         />
-
+    
+    <TextView
+        android:layout_width = "wrap_content"
+        android:layout_height = "wrap_content"
+        android:text = "Hello World!"
+        android:id="@+id/textview"
+        app:layout_constraintBottom_toBottomOf = "parent"
+        app:layout_constraintLeft_toLeftOf = "parent"
+        app:layout_constraintRight_toRightOf = "parent"
+        app:layout_constraintTop_toBottomOf="@+id/info"
+        />
+    
     <com.facebook.login.widget.LoginButton
         android:id="@+id/fbsign"
         android:layout_width="250dp"
