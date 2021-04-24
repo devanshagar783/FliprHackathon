@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -25,6 +26,7 @@ public class EmailSignUp extends AppCompatActivity {
     private TextInputLayout emailbox, pwdbox;
     private EditText email, pwd;
     private Button register, login;
+    private FloatingActionButton fbsign, phonesign;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +39,8 @@ public class EmailSignUp extends AppCompatActivity {
         pwd = findViewById(R.id.passwd);
         register = findViewById(R.id.registerem);
         login = findViewById(R.id.loginem);
+        fbsign = findViewById(R.id.fbsign);
+        phonesign = findViewById(R.id.phonesign);
         setWatcher(emailbox, email);
         setWatcher(pwdbox, pwd);
 
@@ -97,7 +101,19 @@ public class EmailSignUp extends AppCompatActivity {
             }
         });
 
+        fbsign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(EmailSignUp.this, "FB sign in", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+        phonesign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(EmailSignUp.this, PhoneAuthActivity.class));
+            }
+        });
     }
 
     public void setWatcher(TextInputLayout layout, EditText editText) {

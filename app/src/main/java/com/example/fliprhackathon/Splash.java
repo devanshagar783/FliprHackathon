@@ -16,7 +16,7 @@ public class Splash extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user == null)
-            startActivity(new Intent(this, PhoneAuthActivity.class));
+            startActivity(new Intent(this, EmailSignUp.class));
         else {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
         }

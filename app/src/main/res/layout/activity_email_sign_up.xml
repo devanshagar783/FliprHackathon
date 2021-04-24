@@ -14,7 +14,8 @@
         style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        android:layout_margin = "10dp"
+        android:layout_marginTop = "200dp"
+        android:layout_marginHorizontal="32dp"
         android:hint = "@string/email_address"
         android:paddingBottom = "10dp"
         app:endIconMode = "clear_text"
@@ -35,7 +36,7 @@
         style = "@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        android:layout_margin = "10dp"
+        android:layout_marginHorizontal="32dp"
         android:hint = "Password"
         android:paddingBottom = "10dp"
         app:endIconMode = "password_toggle"
@@ -54,11 +55,8 @@
         android:id = "@+id/rellayout"
         android:layout_width = "match_parent"
         android:layout_height = "wrap_content"
-        app:layout_constraintEnd_toEndOf = "parent"
-        app:layout_constraintStart_toStartOf = "parent"
-        app:layout_constraintTop_toBottomOf = "@id/passwdbox"
+        android:layout_marginHorizontal="32dp"
         >
-        
         
         <com.google.android.material.button.MaterialButton
             android:id = "@+id/registerem"
@@ -80,6 +78,46 @@
             android:text = "@string/login"
             />
     
+    </RelativeLayout>
+    
+    <RelativeLayout
+        android:layout_width = "match_parent"
+        android:layout_height = "wrap_content"
+        android:layout_marginHorizontal="32dp"
+        >
+    
+        <TextView
+            android:layout_width = "wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_height = "wrap_content"
+            android:text="Use other ways to sign in?"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/reltv"
+            />
+    
+        <LinearLayout
+            android:layout_width = "wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_height = "wrap_content"
+            android:layout_below="@+id/reltv"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal">
+        
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:id="@+id/fbsign"
+                android:src="@drawable/fb_icon"/>
+        
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width = "wrap_content"
+                android:layout_height = "wrap_content"
+                android:id="@+id/phonesign"
+                android:layout_marginStart="40dp"
+                android:src="@drawable/phone"/>
+    
+        </LinearLayout>
+        
     </RelativeLayout>
 
 </LinearLayout>
