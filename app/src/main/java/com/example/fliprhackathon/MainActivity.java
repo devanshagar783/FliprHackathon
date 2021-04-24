@@ -32,9 +32,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
-
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.facebook.Profile;
@@ -58,8 +55,11 @@ public class MainActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        info = findViewById(R.id.info);
-        info.setText("Welcome " + currentUser.getDisplayName());
+        userName = findViewById(R.id.userName);
+        userDP = findViewById(R.id.userDP);
+        Uri userID = Profile.getCurrentProfile().getProfilePictureUri(120, 120);
+        userName.setText("Welcome, " + currentUser.getDisplayName());
+
         btn = findViewById(R.id.buildteam);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,13 +71,7 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.textview);
         //readExcelSheet();
         //readSheet2();
-        readJsonNames();
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        userName = findViewById(R.id.userName);
-        userDP = findViewById(R.id.userDP);
-        Uri userID = Profile.getCurrentProfile().getProfilePictureUri(120,120);
-        userName.setText("Welcome, " + currentUser.getDisplayName());
+        //readJsonNames();
 
         Glide.with(this)
                 .asBitmap()
