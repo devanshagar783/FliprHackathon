@@ -1,6 +1,9 @@
 package com.example.fliprhackathon;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.content.res.AssetManager;
@@ -45,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     private ImageView userDP;
     private TextView textView;
     private Button btn;
+    RecyclerView upcomingMachesRV;
 
     private static final String TAG = "MainActivity";
 
@@ -78,10 +82,10 @@ public class MainActivity extends AppCompatActivity {
         });
 
         textView = findViewById(R.id.textview);
-        //readExcelSheet();
-        //readSheet2();
-        //readJsonNames();
-
+        upcomingMachesRV = findViewById(R.id.upcomingMatchesRV);
+//        readExcelSheet();
+//        readSheet2();
+        readJsonNames();
     }
 
     void readExcelSheet() {
@@ -225,10 +229,10 @@ public class MainActivity extends AppCompatActivity {
 
             HashMap<String, String> hashMap = new HashMap<String, String>();
             List<String> teams = new ArrayList<>();
-
+            JSONObject jsonObject = new JSONObject();
 
             try {
-                JSONObject jsonObject = new JSONObject(jsonfile);
+                jsonObject = new JSONObject(jsonfile);
                 Log.d(TAG, "readJsonNames: " + rand);
                 JSONObject info = jsonObject.getJSONObject("info");
                 JSONArray teamName = info.getJSONArray("teams");
@@ -274,6 +278,11 @@ public class MainActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.d(TAG, "readJsonNames: " + e.getMessage());
+            }
+            finally {
+                RVAdapter rvAdapter = new RVAdapter(getApplicationContext(), jsonObject, "upcoming_matches");
+                upcomingMachesRV.setAdapter(rvAdapter);
+                upcomingMachesRV.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
             }
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage() + "error", Toast.LENGTH_LONG).show();
