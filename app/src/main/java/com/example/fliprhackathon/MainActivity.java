@@ -272,9 +272,31 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 }
+                HashMap<String, List<String>> teamsname = new HashMap<String, List<String>>();
+                List list1 = new ArrayList();
+                List list2 = new ArrayList();
                 for (Map.Entry map : hashMap.entrySet()) {
-                    Log.d(TAG, "readJsonNames: " + (map.getKey() + " - " + map.getValue() + "\n"));
+//                    Log.d(TAG, "readJsonNames: " + (map.getKey() + " - " + map.getValue() + "\n"));
+
+                    if(map.getValue().equals((teamName.get(0)))){
+                        list1.add(map.getKey());
+                    }
+                    if(map.getValue().equals((teamName.get(1)))){
+                        list2.add(map.getKey());
+                    }
                 }
+
+                teamsname.put(teamName.get(0).toString(), list1);
+                teamsname.put(teamName.get(1).toString(), list2);
+
+                Log.d(TAG, "readJsonNames: "+teamsname);
+
+
+
+
+                JSONObject object = new JSONObject(hashMap);
+                //Log.d(TAG, "readJsonNames: "+object);
+
             } catch (JSONException e) {
                 e.printStackTrace();
                 Log.d(TAG, "readJsonNames: " + e.getMessage());

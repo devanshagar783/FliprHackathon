@@ -87,7 +87,7 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.UpcomingMatchesHol
                 Log.d(TAG, "UpcomingMatchesHolder: hello this is " + getAdapterPosition() + itemView.getContext());
                 Intent intent = new Intent(context, BuildTeamActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("data", (Parcelable) jsonObject);
+                intent.putExtra("data", jsonObject.toString());
                 context.startActivity(intent);
             });
         }
