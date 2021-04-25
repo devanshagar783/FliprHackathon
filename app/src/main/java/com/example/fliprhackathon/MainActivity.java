@@ -73,13 +73,13 @@ public class MainActivity extends AppCompatActivity {
             userDP.setVisibility(View.INVISIBLE);
         }
 
-        btn = findViewById(R.id.buildteam);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), BuildTeamActivity.class));
-            }
-        });
+//        btn = findViewById(R.id.buildteam);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                startActivity(new Intent(getApplicationContext(), BuildTeamActivity.class));
+//            }
+//        });
 
         textView = findViewById(R.id.textview);
         upcomingMachesRV = findViewById(R.id.upcomingMatchesRV);
