@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
+import org.apache.poi.ss.formula.functions.T;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -37,12 +38,16 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @NonNull
     @Override
-    public RVAdapter.UpcomingMatchesHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         switch (adapterType) {
             case "upcoming_matches":
                 View view = inflater.inflate(R.layout.upcoming_matches_card, parent, false);
                 return new UpcomingMatchesHolder(view);
+
+            case "team_1":
+                View view1 = inflater.inflate(R.layout.players_name_card, parent, false);
+                return new Team1Holder(view1);
 
             default:
                 return null;
@@ -62,6 +67,43 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
+                break;
+
+            case "team_1":
+                Team1Holder team1Holder = (Team1Holder) holder;
+                try {
+                    JSONObject info = jsonObject.getJSONObject("info");
+                    JSONArray teamName = info.getJSONArray("teams");
+                    team1Holder.name.setText(teamName.getString(0));
+                    team1Holder.points.setText(teamName.getString(1));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "team_2":
+                Team2Holder team2Holder = (Team2Holder) holder;
+                try {
+                    JSONObject info = jsonObject.getJSONObject("info");
+                    JSONArray teamName = info.getJSONArray("teams");
+                    team2Holder.name.setText(teamName.getString(0));
+                    team2Holder.points.setText(teamName.getString(1));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
+
+            case "your_11":
+                Your11Holder your11Holder = (Your11Holder) holder;
+                try {
+                    JSONObject info = jsonObject.getJSONObject("info");
+                    JSONArray teamName = info.getJSONArray("teams");
+                    your11Holder.name.setText(teamName.getString(0));
+                    your11Holder.points.setText(teamName.getString(1));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                break;
         }
     }
 
@@ -83,8 +125,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             btn =itemView.findViewById(R.id.create_team_btn);
 
             btn.setOnClickListener(v -> {
-                Toast.makeText(itemView.getContext(), "This is working", Toast.LENGTH_SHORT).show();
-                Log.d(TAG, "UpcomingMatchesHolder: hello this is " + getAdapterPosition() + itemView.getContext());
+//                Log.d(TAG, "UpcomingMatchesHolder: hello this is " + getAdapterPosition() + itemView.getContext());
                 Intent intent = new Intent(context, BuildTeamActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("data", jsonObject.toString());
@@ -93,5 +134,51 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
+    public class Team1Holder extends RecyclerView.ViewHolder {
+        TextView name, points;
 
+        public Team1Holder(@NonNull View itemView) {
+            super(itemView);
+
+            name = itemView.findViewById(R.id.playerName);
+            points = itemView.findViewById(R.id.playerPoints);
+
+            itemView.setOnClickListener(v -> {
+                name.setVisibility(View.GONE);
+                points.setVisibility(View.GONE);
+            });
+        }
+    }
+
+    public class Team2Holder extends RecyclerView.ViewHolder {
+        TextView name, points;
+
+        public Team2Holder(@NonNull View itemView) {
+            super(itemView);
+
+            name = itemView.findViewById(R.id.playerName);
+            points = itemView.findViewById(R.id.playerPoints);
+
+            itemView.setOnClickListener(v -> {
+                name.setVisibility(View.GONE);
+                points.setVisibility(View.GONE);
+            });
+        }
+    }
+
+    public class Your11Holder extends RecyclerView.ViewHolder {
+        TextView name, points;
+
+        public Your11Holder(@NonNull View itemView) {
+            super(itemView);
+
+            name = itemView.findViewById(R.id.playerName);
+            points = itemView.findViewById(R.id.playerPoints);
+
+            itemView.setOnClickListener(v -> {
+                name.setVisibility(View.GONE);
+                points.setVisibility(View.GONE);
+            });
+        }
+    }
 }
