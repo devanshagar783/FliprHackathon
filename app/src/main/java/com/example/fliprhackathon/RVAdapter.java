@@ -21,7 +21,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class RVAdapter extends RecyclerView.Adapter<RVAdapter.UpcomingMatchesHolder> {
+public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     Context context;
 //    JSONArray jsonArray;
@@ -50,18 +50,18 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.UpcomingMatchesHol
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RVAdapter.UpcomingMatchesHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         switch (adapterType) {
             case "upcoming_matches":
+                UpcomingMatchesHolder upcomingMatchesHolder = (UpcomingMatchesHolder) holder;
                 try {
                     JSONObject info = jsonObject.getJSONObject("info");
                     JSONArray teamName = info.getJSONArray("teams");
-                    holder.Team1.setText(teamName.getString(0));
-                    holder.Team2.setText(teamName.getString(1));
+                    upcomingMatchesHolder.Team1.setText(teamName.getString(0));
+                    upcomingMatchesHolder.Team2.setText(teamName.getString(1));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
         }
     }
 
@@ -87,9 +87,11 @@ public class RVAdapter extends RecyclerView.Adapter<RVAdapter.UpcomingMatchesHol
                 Log.d(TAG, "UpcomingMatchesHolder: hello this is " + getAdapterPosition() + itemView.getContext());
                 Intent intent = new Intent(context, BuildTeamActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("data", (Parcelable) jsonObject);
+                intent.putExtra("data", jsonObject.toString());
                 context.startActivity(intent);
             });
         }
     }
+
+
 }
