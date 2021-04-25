@@ -178,6 +178,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             itemView.setOnClickListener(v -> {
                 name.setVisibility(View.GONE);
                 points.setVisibility(View.GONE);
+//                name.setBackgroundColor();
             });
         }
     }
