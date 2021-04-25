@@ -57,8 +57,17 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = mAuth.getCurrentUser();
         userName = findViewById(R.id.userName);
         userDP = findViewById(R.id.userDP);
-        Uri userID = Profile.getCurrentProfile().getProfilePictureUri(120, 120);
-        userName.setText("Welcome, " + currentUser.getDisplayName());
+        if (getIntent().getBooleanExtra("fb", false)) {
+            Uri userID = Profile.getCurrentProfile().getProfilePictureUri(120, 120);
+            userName.setText("Welcome, " + currentUser.getDisplayName());
+            Glide.with(this)
+                    .asBitmap()
+                    .load(userID)
+                    .into(userDP);
+        } else {
+            userName.setVisibility(View.INVISIBLE);
+            userDP.setVisibility(View.INVISIBLE);
+        }
 
         btn = findViewById(R.id.buildteam);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -73,10 +82,6 @@ public class MainActivity extends AppCompatActivity {
         //readSheet2();
         //readJsonNames();
 
-        Glide.with(this)
-                .asBitmap()
-                .load(userID)
-                .into(userDP);
     }
 
     void readExcelSheet() {
